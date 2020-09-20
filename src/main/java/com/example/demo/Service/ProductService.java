@@ -1,32 +1,34 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Product;
 import com.example.demo.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public void create(){
-        productRepository.create();
+    public void create(Product p){
+        productRepository.create(p);
     }
 
-    public void read(){
-        productRepository.read();
+    public Product read(int id){
+        return productRepository.read(id);
     }
 
-    public void readAll(){
-        productRepository.readAll();
+    public List<Product> readAll(){
+        return productRepository.readAll();
     }
 
-    public void update(){
-        productRepository.update();
+    public void update(Product p){
+        productRepository.update(p);
     }
 
-    public void delete() {
-        productRepository.delete();
+    public void delete(int id) {
+        productRepository.delete(id);
     }
 }

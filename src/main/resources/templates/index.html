@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Forside</title>
@@ -23,7 +23,19 @@
         </tr>
     </thead>
     <tbody>
-
+        <tr th:each="product: ${products}"> <!--th:each means it will loop through the product list -->
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.description}"></td>
+            <td>
+                <a th:href="@{'/deleteProduct/'+${product.id}}">
+                    <button>Delete</button>
+                </a>
+                <a th:href="@{'/updateProduct/'+${product.id}}">
+                    <button>Update</button>
+                </a>
+            </td>
+        </tr>
     </tbody>
 </table>
 </body>
