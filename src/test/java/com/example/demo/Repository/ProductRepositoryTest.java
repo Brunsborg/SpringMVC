@@ -1,4 +1,4 @@
-package com.example.demo.Repository;
+/*package com.example.demo.Repository;
 
 import com.example.demo.Model.Product;
 import org.junit.jupiter.api.Test;
@@ -44,4 +44,4 @@ class ProductRepositoryTest {
     @Test
     void delete() {
     }
-}
+}*/
