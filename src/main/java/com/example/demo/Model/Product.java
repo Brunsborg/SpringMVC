@@ -1,12 +1,17 @@
 package com.example.demo.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private long id;
     private String name;
     private Double price;
@@ -52,5 +57,15 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

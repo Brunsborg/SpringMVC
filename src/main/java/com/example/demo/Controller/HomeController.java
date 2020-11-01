@@ -21,9 +21,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
-        List<Product> productList = productService.readAll();
+        List<Product> productList = productService.findAll();
         model.addAttribute("products", productList);
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/createProduct")
@@ -33,19 +33,20 @@ public class HomeController {
 
     @PostMapping("/createProduct")
     public String createProduct(@ModelAttribute Product p){
-        productService.create(p);
+        productService.save(p);
         return "redirect:/";
     }
 
     @GetMapping("/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable("id") int id){
-        productService.delete(id);
+    public String deleteProduct(@PathVariable("id") long id){
+        productService.deleteById(id);
         return "redirect:/";
     }
 
     @GetMapping("/updateProduct/{id}")
-    public String updateProduct(@PathVariable("id") int id, Model model){
-        model.addAttribute("product", productService.read(id));
+    public String updateProduct(@PathVariable("id") long id, Model model){
+        model.addAttribute("product", productService.findById(id).get()); //an optional is returned. We use get to "get" the product object in it
+
         return "updateProduct";
     }
     @PostMapping("/updateProduct")
