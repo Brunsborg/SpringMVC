@@ -3,6 +3,7 @@ package com.example.demo.Model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -13,6 +14,8 @@ public class CompanyDescription {
     @GeneratedValue(strategy = IDENTITY)
     private long id;
     private String description;
+    @OneToOne
+    private Product product;
 
     public CompanyDescription() {
     }
@@ -36,6 +39,14 @@ public class CompanyDescription {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override
