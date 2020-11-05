@@ -15,7 +15,7 @@ public class Category {
     @GeneratedValue(strategy = IDENTITY)
     private long id;
     private String name;
-    @ManyToMany
+    @ManyToMany (mappedBy = "categories")
     private List<Product> products;
 
     public Category(){

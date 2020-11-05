@@ -20,7 +20,7 @@ public class Product {
     @ManyToMany
     private List<Category> categories;
     @ManyToOne
-    Company company;
+    private Company company;
 
     public Product() {
     }
