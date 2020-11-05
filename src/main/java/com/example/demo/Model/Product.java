@@ -1,9 +1,8 @@
 package com.example.demo.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -18,6 +17,10 @@ public class Product {
     private String description;
     @OneToOne
     private CompanyDescription companyDescription;
+    @ManyToMany
+    private List<Category> categories;
+    @ManyToOne
+    Company company;
 
     public Product() {
     }
@@ -27,6 +30,22 @@ public class Product {
         this.name = name;
         this.price = price;
         this.description = description;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public long getId() {
