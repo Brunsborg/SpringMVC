@@ -3,6 +3,7 @@ package com.example.demo.Model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -14,6 +15,9 @@ public class Company {
     private String name;
 
     public Company(){}
+
+    @OneToOne
+    private Product product;
 
     public long getId() {
         return id;
