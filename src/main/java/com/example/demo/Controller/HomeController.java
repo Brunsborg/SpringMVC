@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Product;
+import com.example.demo.Service.CompanyService;
 import com.example.demo.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,10 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-
     @Autowired
     ProductService productService;
+    @Autowired
+    CompanyService companyService;
 
 
     @GetMapping("/")
@@ -27,7 +29,8 @@ public class HomeController {
     }
 
     @GetMapping("/createProduct")
-    public String createProduct(){
+    public String createProduct(Model model){
+        model.addAttribute("companies", companyService.findAll());
         return "createProduct";
     }
 
@@ -45,8 +48,8 @@ public class HomeController {
 
     @GetMapping("/updateProduct/{id}")
     public String updateProduct(@PathVariable("id") long id, Model model){
-        model.addAttribute("product", productService.findById(id).get()); //an optional is returned. We use get to "get" the product object in it
-
+        model.addAttribute("product", productService.findById(id));
+        model.addAttribute("companies", companyService.findAll());
         return "updateProduct";
     }
     @PostMapping("/updateProduct")

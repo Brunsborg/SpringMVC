@@ -18,15 +18,20 @@ public class ProductService {
         productRepository.save(p);
     }
 
-    public Optional<Product> findById(long id){
-        return productRepository.findById(id);
+    public Product findById(long id){
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if(optionalProduct.isPresent()){
+            return optionalProduct.get();
+        }else
+            throw new RuntimeException();
     }
 
     public List<Product> findAll(){
         //create list
         List<Product> products = new ArrayList<>();
-        //fetch list, access iterator, use for each remaining method to add products to list
-        productRepository.findAll().iterator().forEachRemaining(products::add);
+        for(Product p : productRepository.findAll()){
+            products.add(p);
+        }
         return products;
     }
 

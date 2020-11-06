@@ -4,7 +4,7 @@ INSERT INTO product(id, name, price, description) VALUES (DEFAULT, 'Water', 5, '
 INSERT INTO product(id, name, price, description) VALUES (DEFAULT, 'Beer', 10, 'An alcoholically drink');
 
 -- Company
-INSERT INTO company(id, name) VALUES (DEFAULT, 'Coca Colary');
+INSERT INTO company(id, name) VALUES (DEFAULT, 'Coca Calory');
 INSERT INTO company(id, name) VALUES (DEFAULT, 'Carlsberg');
 
 -- Company_Description

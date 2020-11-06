@@ -29,6 +29,14 @@
                 </div>
                 <input type="text" name="description" th:value="${product.description}" placeholder="Description" class="form-control" required>
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Company</span>
+                </div>
+                <select name="company" class="form-control" id="sel1">
+                    <option th:each="company: ${companies}" th:text="${company.name}" th:value="${company.id}" th:field="${product.company}"></option>
+                </select>
+            </div>
 
             <input type="submit" value="Update" class="btn btn-info">
         </form>

@@ -15,7 +15,7 @@ public class Product {
     private String name;
     private Double price;
     private String description;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL) //delete?
     private CompanyDescription companyDescription;
     @ManyToMany
     private List<Category> categories;
